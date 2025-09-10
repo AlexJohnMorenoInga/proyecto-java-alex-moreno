@@ -1,5 +1,6 @@
 package com.nttdata.dockerized.postgresql.service;
 
+import com.nttdata.dockerized.postgresql.exceptions.BadRequestException;
 import com.nttdata.dockerized.postgresql.exceptions.ResourceNotFoundException;
 import com.nttdata.dockerized.postgresql.model.entity.DetallePedido;
 import com.nttdata.dockerized.postgresql.model.entity.Pedido;
@@ -28,6 +29,17 @@ public class DetallePedidoServiceImpl implements DetallePedidoService{
 
     @Override
     public DetallePedido guardarDetallePedido(Long idPedido, Long idProducto, DetallePedido detallePedido) {
+
+
+        if (detallePedido.getCantidad() == null || detallePedido.getCantidad() <= 0) {
+            throw new BadRequestException("La cantidad debe ser mayor a 0");
+        }
+
+        if (detallePedido.getPrecioUnitario() == null || detallePedido.getPrecioUnitario() <= 0) {
+            throw new BadRequestException("El total del pedido debe ser mayor a 0");
+        }
+
+
         // Verificar que exista el pedido
         Pedido pedido = pedidoRepository.findById(idPedido).orElseThrow(
                 () -> new ResourceNotFoundException("El id del pedido indicado no existe")
