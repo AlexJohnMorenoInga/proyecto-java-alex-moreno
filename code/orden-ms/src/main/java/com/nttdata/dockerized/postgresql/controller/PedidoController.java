@@ -4,10 +4,7 @@ import com.nttdata.dockerized.postgresql.model.entity.Pedido;
 import com.nttdata.dockerized.postgresql.service.PedidoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -35,4 +32,14 @@ public class PedidoController {
         // Devolver respuesta en el return
         return new ResponseEntity<>(pedidoGuardado, HttpStatus.CREATED);
     }
+
+    @GetMapping("/{idPedido}")
+    public ResponseEntity<Pedido> traerPedidoPorId(@PathVariable("idPedido") Long idPedido){
+
+        Pedido pedido = pedidoService.traerPedidoPorId(idPedido);
+
+        return new ResponseEntity<>(pedido, HttpStatus.OK);
+
+    }
+
 }

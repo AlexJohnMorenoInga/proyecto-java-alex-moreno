@@ -97,6 +97,7 @@
     <modules>
         <module>code/orden-ms</module>
         <module>code/producto-ms</module>
+        <module>code/composition-order</module>
     </modules>
 </project>
 

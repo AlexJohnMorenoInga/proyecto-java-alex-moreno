@@ -6,4 +6,6 @@ public interface PedidoService {
 
     Pedido guardarPedido(Long idUser, Pedido pedido);
 
+    Pedido traerPedidoPorId(Long idPedido);
+
 }
