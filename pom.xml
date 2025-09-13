@@ -98,6 +98,8 @@
         <module>code/orden-ms</module>
         <module>code/producto-ms</module>
         <module>code/composition-order</module>
+        <module>code/eureka-server</module>
+        <module>code/stock-ms</module>
     </modules>
 </project>
 

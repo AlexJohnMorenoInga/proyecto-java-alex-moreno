@@ -11,10 +11,10 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>orden-ms</artifactId>
+    <artifactId>stock-ms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>orden-ms</name>
-    <description>Microservicio de órdenes</description>
+    <name>stock-ms</name>
+    <description>stock-ms</description>
 
     <dependencies>
         <!-- Spring Boot -->
@@ -71,11 +71,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
     </dependencies>
