@@ -1,9 +1,6 @@
 package com.nttdata.dockerized.postgresql.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nttdata.dockerized.postgresql.model.dto.UserSaveRequestDto;
-import com.nttdata.dockerized.postgresql.model.entity.User;
-import com.nttdata.dockerized.postgresql.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -16,7 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 //import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -26,7 +22,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
