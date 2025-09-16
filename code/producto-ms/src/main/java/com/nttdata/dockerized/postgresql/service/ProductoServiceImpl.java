@@ -49,4 +49,12 @@ public class ProductoServiceImpl implements ProductoService{
 
     }
 
+    @Override
+    public Producto getProductoById(Long idProducto) {
+        Producto producto = productoRepository.findById(idProducto).orElseThrow(
+                () -> new ResourceNotFoundException("El id del producto indicado no existe")
+        );
+        return producto;
+    }
+
 }

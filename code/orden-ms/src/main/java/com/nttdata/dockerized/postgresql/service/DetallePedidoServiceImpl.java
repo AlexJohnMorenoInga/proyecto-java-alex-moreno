@@ -1,7 +1,9 @@
 package com.nttdata.dockerized.postgresql.service;
 
+import com.nttdata.dockerized.postgresql.client.ProductoClient;
 import com.nttdata.dockerized.postgresql.exceptions.BadRequestException;
 import com.nttdata.dockerized.postgresql.exceptions.ResourceNotFoundException;
+import com.nttdata.dockerized.postgresql.model.dto.ProductoDTO;
 import com.nttdata.dockerized.postgresql.model.entity.DetallePedido;
 import com.nttdata.dockerized.postgresql.model.entity.Pedido;
 import com.nttdata.dockerized.postgresql.repository.DetallePedidoRepository;
@@ -15,14 +17,12 @@ public class DetallePedidoServiceImpl implements DetallePedidoService{
 
     private final PedidoRepository pedidoRepository;
 
-    private final ProductoRepository productoRepository;
+    private final ProductoClient productoClient;
 
-    public DetallePedidoServiceImpl(DetallePedidoRepository detallePedidoRepository,
-                                    PedidoRepository pedidoRepository,
-                                    ProductoRepository productoRepository) {
+    public DetallePedidoServiceImpl(DetallePedidoRepository detallePedidoRepository, PedidoRepository pedidoRepository, ProductoClient productoClient) {
         this.detallePedidoRepository = detallePedidoRepository;
         this.pedidoRepository = pedidoRepository;
-        this.productoRepository = productoRepository;
+        this.productoClient = productoClient;
     }
 
     @Override
@@ -43,12 +43,10 @@ public class DetallePedidoServiceImpl implements DetallePedidoService{
                 () -> new ResourceNotFoundException("El id del pedido indicado no existe")
         );
         // Verificar que exista el producto
-        Producto producto = productoRepository.findById(idProducto).orElseThrow(
-                () -> new ResourceNotFoundException("El id del producto indicado no existe")
-        );
+        ProductoDTO productoDTO = productoClient.findProductoById(idProducto);
         // Asignar el pedido y producto al detalle pedido
         detallePedido.setPedido(pedido);
-        detallePedido.setProducto(producto);
+        detallePedido.setProducto(productoDTO.getIdProducto());
         // Guardar el detalle pedido
         DetallePedido detallePedidoGuardado = detallePedidoRepository.save(detallePedido);
         // Retornar el detalle pedido guardado

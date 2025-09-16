@@ -33,4 +33,12 @@ public class PedidoServiceImpl implements PedidoService{
         return pedidoGuardado;
     }
 
+    @Override
+    public Pedido traerPedidoPorId(Long idPedido) {
+        Pedido pedido = pedidoRepository.findById(idPedido).orElseThrow(
+                () -> new ResourceNotFoundException("El id del pedido indicado no existe")
+        );
+        return pedido;
+    }
+
 }

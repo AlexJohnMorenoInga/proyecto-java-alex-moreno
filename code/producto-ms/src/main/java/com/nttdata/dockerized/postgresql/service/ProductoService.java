@@ -6,4 +6,6 @@ public interface ProductoService {
 
     Producto guardarProducto(Long idCategoria, Producto producto);
 
+    Producto getProductoById(Long idProducto);
+
 }

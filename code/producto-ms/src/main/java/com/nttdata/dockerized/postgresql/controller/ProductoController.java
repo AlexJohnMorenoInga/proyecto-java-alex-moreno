@@ -1,6 +1,7 @@
 package com.nttdata.dockerized.postgresql.controller;
 
 import com.nttdata.dockerized.postgresql.model.dto.ProductoDTO;
+import com.nttdata.dockerized.postgresql.model.dto.ProductoDTOb;
 import com.nttdata.dockerized.postgresql.model.entity.Producto;
 import com.nttdata.dockerized.postgresql.service.ProductoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -27,6 +28,15 @@ public class ProductoController {
         Producto productoGuardado = productoService.guardarProducto(idCategoria, INSTANCE.toProducto(productoDTO));
 
         return new ResponseEntity<>(productoGuardado, HttpStatus.CREATED);
+
+    }
+
+    @GetMapping("/{idProducto}")
+    public ResponseEntity<ProductoDTOb> obtenerProductoPorId(@PathVariable(value = "idProducto") Long idProducto){
+
+        ProductoDTOb productoDTOb = INSTANCE.toProductoDTOb(productoService.getProductoById(idProducto));
+
+        return new ResponseEntity<>(productoDTOb, HttpStatus.OK);
 
     }
 

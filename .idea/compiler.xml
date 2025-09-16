@@ -12,8 +12,11 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
         </processorPath>
+        <module name="composition-order" />
         <module name="dockerized.postgresql" />
         <module name="producto-ms" />
+        <module name="eureka-server" />
+        <module name="stock-ms" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
