@@ -20,7 +20,7 @@ public class Application {
 	@Bean
 	public OpenAPI customOpenAPI() {
 		return new OpenAPI()
-				.info(new Info().title("Ejercicio")
+				.info(new Info().title("stock-ms")
 						.version("1.0.0")
 						.description("Endpoints")
 				);
